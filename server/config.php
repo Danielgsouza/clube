@@ -1,9 +1,9 @@
 <?php
 // Configurações do banco de dados
 $host = 'localhost'; // ou o seu host
-$db = 'clube'; // seu banco de dados
-$user = 'root'; // seu usuário do banco de dados
-$pass = ''; // sua senha do banco de dados
+$db = 'u447459179_clube'; // seu banco de dados
+$user = 'u447459179_nicolas'; // seu usuário do banco de dados
+$pass = 'SistemaClube-2025!'; // sua senha do banco de dados
 
 // Conexão com o banco de dados
 try {
