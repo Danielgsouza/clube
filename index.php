@@ -53,7 +53,7 @@
               </div>
               <div class="login-main"> 
                 <form class="theme-form" action="./sign-in/sign-in.php" method="post">
-                  <h2 class="text-center">Entrar na Cont</h2>
+                  <h2 class="text-center">Entrar na Conta</h2>
                   <p class="text-center">Entre com o usuário &amp; senha para fazer o login</p>
                   <div class="form-group">
                     <label class="col-form-label">Usuário</label>
