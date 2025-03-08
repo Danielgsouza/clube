@@ -43,12 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 try {
                     $phpmailer = new PHPMailer();
                     $phpmailer->isSMTP();
-                    $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+                    // $phpmailer->Host = 'sandbox.smtp.mailtrap.io';
+                    $phpmailer->Host = 'smtp.hostinger.com';
+                    $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;   
                     $phpmailer->SMTPAuth = true;
-                    $phpmailer->Port = 2525;
-                    $phpmailer->Username = '2080509af80695';
-                    $phpmailer->Password = 'd2e1132044d48c';
-                    $phpmailer->setFrom('no-reply@seusite.com', 'Recuperação de Senha');
+                    $phpmailer->Port = 465;
+                    // $phpmailer->Username = '2080509af80695';
+                    $phpmailer->Username = 'adminccm@adminccm.com';
+                    // $phpmailer->Password = 'd2e1132044d48c';
+                    $phpmailer->Password = 'Adminccm-2025';
+                    $phpmailer->setFrom('adminccm@adminccm.com', 'Recuperação de Senha');
                     $phpmailer->addAddress($email);
 
                     $phpmailer->isHTML(true);
