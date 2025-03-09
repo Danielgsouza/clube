@@ -37,7 +37,7 @@ const handleSubmit = async () => {
 
     console.log(dados)
     
-    if (!dados.data.length === 0) {
+    if (dados.data.length === 0) {
         // Display an error notification
         notyf.error('Usuário não econtrado e/ou não está cadastrado!');
         inputCpf.value = ''; 
