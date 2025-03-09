@@ -86,7 +86,7 @@
                               <div class="mb-3">
                                 <label class="form-label">Nome Completo</label>
                                 <div class="form-control-plaintext">
-                                  <span id="nome"></span>
+                                  <span id="nome" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
@@ -94,7 +94,7 @@
                               <div class="mb-3">
                                 <label class="form-label">CPF</label>
                                 <div class="form-control-plaintext">
-                                  <span id="cpf"></span>
+                                  <span id="cpf" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
@@ -102,7 +102,7 @@
                               <div class="mb-3">
                                 <label class="form-label">Status</label>
                                 <div class="form-control-plaintext">
-                                  <span id="status"></span>
+                                  <span id="status" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
