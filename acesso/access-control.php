@@ -1,13 +1,3 @@
-
-<?php 
-  session_start();
-  if (!isset($_SESSION['nome'])) {
-    header("Location: ../index.php");
-    exit();
-  }
-  $username = $_SESSION['nome'];
-?>
-
 <!DOCTYPE html >
 <html lang="pt-br">
   <head>
@@ -20,7 +10,8 @@
     <title>Clube de Campo Morungabense</title>
     <!-- Favicon icon-->
     <link rel="icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/images/logo/favicon.png" type="image/x-icon">
+    <!--<link rel="shortcut icon" href="../../assets/images/logo/favicon.png" type="image/x-icon">-->
+    
     <!-- Google font-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -56,15 +47,12 @@
       <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
   
-    <?php require("../layout/navbar.php") ?>
-  
     <!-- <form id="access-control-form" class="card" method="post" enctype="multipart/form-data">
       <input type="text" class="bg-transparent border-0" style="z-index: -1; position: relative;" id="socio-id" name="cpf"/>
     </form> -->
     <div class="page-wrapper compact-wrapper" id="pageWrapper"> 
-    <?php require("../layout/sidebar.php") ?>
       <!-- Page Body Start-->
-      <div class="page-body-wrapper"> 
+      <!--<div class="page-body-wrapper"> -->
         <!-- Page sidebar start-->
         <!-- Page sidebar end-->
         <div class="page-body">
@@ -84,7 +72,7 @@
                           <div class="row">
                             <div class="col-md-6">
                               <div class="mb-3">
-                                <label class="form-label">Nome Completo</label>
+                                <label class="form-label" style="font-size: 1.5rem;">Nome Completo</label>
                                 <div class="form-control-plaintext">
                                   <span id="nome" style="font-size: 1.5rem;"></span>
                                 </div>
@@ -92,7 +80,7 @@
                             </div>
                             <div class="col-md-6">
                               <div class="mb-3">
-                                <label class="form-label">CPF</label>
+                                <label class="form-label" style="font-size: 1.5rem;">CPF</label>
                                 <div class="form-control-plaintext">
                                   <span id="cpf" style="font-size: 1.5rem;"></span>
                                 </div>
@@ -100,7 +88,7 @@
                             </div>
                             <div class="col-sm-6 col-md-4">
                               <div class="mb-3">
-                                <label class="form-label">Status</label>
+                                <label class="form-label" style="font-size: 1.5rem;">Status</label>
                                 <div class="form-control-plaintext">
                                   <span id="status" style="font-size: 1.5rem;"></span>
                                 </div>
@@ -111,7 +99,7 @@
                               <div class="mb-3 mx-auto">
                                 <!-- <label class="form-label">Status</label> -->
                                 <div class="form-control-plaintext">
-                                  <span class="text-center" id="status-icon"></span>
+                                  <span class="text-center" id="status-icon" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
@@ -130,8 +118,7 @@
           </div>
           <!-- Container-fluid starts-->
         </div>
-        <?php require("../layout/footer.php") ?>
-      </div>
+      <!--</div>-->
     </div>
     <!--scripts-->
     <?php require("../utils/scripts.php")?>
