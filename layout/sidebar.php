@@ -59,7 +59,7 @@
                     <h6 class="f-w-600">Usuários</h6>
                 </a>
             </li>
-             <li class="sidebar-list">
+             <!-- <li class="sidebar-list">
                 <i class="fa-solid fa-thumbtack"></i>
                 <a class="sidebar-link" href="../access-control/access-control.php">
                     <svg class="stroke-icon">
@@ -67,7 +67,7 @@
                     </svg>
                     <h6 class="f-w-600">Controle de Acesso</h6>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
     <div class="right-arrow" id="right-arrow">

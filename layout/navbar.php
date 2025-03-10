@@ -1,10 +1,4 @@
 <?php
-    // session_start();
-    // require_once('../server/config.php');
-    // if(empty($_SESSION['usuario'])) {
-    //     header('Location: ./home.php');
-    //     exit;
-    // }
 
     // Verifica se a variável $_SESSION['cpf'] está definida
     $cpf = isset($_SESSION['cpf']) ? $_SESSION['cpf'] : null;
