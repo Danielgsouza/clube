@@ -129,10 +129,13 @@ depedentsForm.addEventListener("submit", function(e){
         const dados = await response.json();
 
         if (dados.status) {
+          var button = document.getElementById("btn-submit");
+          button.classList.add("disabled");
           notyf.success('Dados salvos com sucesso!');
+          depedentsForm.reset();
           setTimeout(() => {
             window.location.href = "./dependents.php";
-          }, 2400);
+          }, 1500);
         } else {
           notyf.error('Erro!', dados.msg);
         }

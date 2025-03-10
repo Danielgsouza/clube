@@ -1,5 +1,10 @@
 <?php 
   session_start();
+  if (!isset($_SESSION['nome'])) {
+    header("Location: ../index.php");
+    exit();
+  }
+  $username = $_SESSION['nome'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -97,8 +102,11 @@
                               </div>
                               <div class="col-sm-6 col-md-4">
                                 <div class="mb-3">
+                                  <?php
+                                    $currentDate = date('Y-m-d'); // Obter a data atual no formato 'YYYY-MM-DD'
+                                  ?>
                                   <label class="form-label">Data de Nascimento</label>
-                                  <input class="form-control" type="date" name="data_nascimento" id="nasc" required/>
+                                  <input class="form-control" type="date" name="data_nascimento" id="nasc" max="<?php echo $currentDate; ?>" required/>
                                 </div>
                               </div>
                               <div class="col-sm-6 col-md-4">
@@ -141,7 +149,7 @@
 
                     </div>
                     <div class="card-footer text-end">
-                      <button class="btn btn-primary" type="submit">Salvar</button>
+                      <button class="btn btn-primary" type="submit" id="btn-submit">Salvar</button>
                     </div>
                   </form>
                 </div>

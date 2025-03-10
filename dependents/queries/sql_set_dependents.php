@@ -60,64 +60,35 @@ try {
     }
   }
 
-  // // Endereço do diretório
-  // $diretorio = "../uploads/";
-
-  // // Criar o diretório se não existir
-  // if (!is_dir($diretorio)) {
-  //   mkdir($diretorio, 0755, true);
-  // }
-  
-  //  // Verificar se já existe uma imagem associada ao CPF do usuário
-  //  $imagemExistente = glob($diretorio . $cpf . '.*'); // Procurar qualquer arquivo com o CPF como nome, de qualquer extensão
-
-  //  if (!empty($imagemExistente)) {
-  //    // Se a imagem já existir, exclui o arquivo antigo
-  //    unlink($imagemExistente[0]);
-  //  }
- 
-  // // Receber os arquivos do formulário
-  // $arquivo = $_FILES['foto'];
-
-  // // Verificar se o arquivo foi enviado
-  // if ($arquivo['error'] == UPLOAD_ERR_OK) {
-  //   // Criar o nome do arquivo usando o CPF do usuário
-  //   $nome_arquivo = $cpf . '.' . pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-
-  //   // Criar o endereço de destino da imagem
-  //   $destino = $diretorio . $nome_arquivo;
-  //   move_uploaded_file($arquivo['tmp_name'], $destino);
-  // }
-
-  // if(isset($_POST['cpf'])){
-  //   // Obtém o CPF
-  //   $text = $_POST['cpf'];
+  if(isset($_POST['cpf'])){
+    // Obtém o CPF
+    $text = $_POST['cpf'];
     
-  //   // Define o nome do arquivo como o CPF
-  //   $name = $cpf . ".png";
+    // Define o nome do arquivo como o CPF
+    $name = $cpf . ".png";
     
-  //   // Define o caminho para salvar o QR Code
-  //   $file = "../qrcode/{$name}";
+    // Define o caminho para salvar o QR Code
+    $file = "../qrcode/{$name}";
 
-  //   // Verifica se a pasta qrcode existe e cria se não existir
-  //   if (!is_dir('../qrcode/')) {
-  //     mkdir('../qrcode/', 0755, true);
-  //   }
+    // Verifica se a pasta qrcode existe e cria se não existir
+    if (!is_dir('../qrcode/')) {
+      mkdir('../qrcode/', 0755, true);
+    }
 
-  //   $options = array(
-  //     'w' => 200,
-  //     'h' => 200,
-  //   );
-  //   $generator = new QRCode($text, $options);
-  //   $image = $generator->render_image();
+    $options = array(
+      'w' => 200,
+      'h' => 200,
+    );
+    $generator = new QRCode($text, $options);
+    $image = $generator->render_image();
     
-  //   // Salva a imagem do QR Code na pasta qrcode
-  //   imagepng($image, $file);
-  //   imagedestroy($image);
+    // Salva a imagem do QR Code na pasta qrcode
+    imagepng($image, $file);
+    imagedestroy($image);
 
-  //   // Define o caminho do QR Code para exibição
-  //   $qrCodeFileName = $file; // Salva o caminho do arquivo
-  // }
+    // Define o caminho do QR Code para exibição
+    $qrCodeFileName = $file; // Salva o caminho do arquivo
+  }
 
   // Endereço do diretório
   $diretorio = "../uploads/";
@@ -130,6 +101,7 @@ try {
   // Verificar se já existe uma imagem associada ao CPF do usuário
   $imagemExistente = glob($diretorio . $cpf . '.*'); // Procurar qualquer arquivo com o CPF como nome, de qualquer extensão
 
+  
   // Receber os arquivos do formulário
   $arquivo = $_FILES['foto'];
 
