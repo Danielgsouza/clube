@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async function() {
       htmlBody += `<td><span class='badge rounded-pill ${colorBadge}'>${text}</td>`;
       htmlBody += `<td>${element.cpf}</td>`;
       htmlBody += `<td>${element.nome}</td>`;
+      htmlBody += `<td>${element.profissao}</td>`;
       htmlBody += `<td>${dataNascimento}</td>`;
       htmlBody += `<td>${element.telefone}</td>`;
       htmlBody += `<td>${element.endereco}</td>`;

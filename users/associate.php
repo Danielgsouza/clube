@@ -87,6 +87,7 @@
                             <th>STATUS</th>
                             <th>CPF</th>
                             <th>NOME</th>
+                            <th>PROFISSÃO</th>
                             <th>DATA DE NASC.</th>
                             <th>TELEFONE</th>
                             <th>ENDEREÇO</th>
