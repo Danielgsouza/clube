@@ -112,7 +112,7 @@
                               <div class="col-sm-6 col-md-4">
                                 <div class="mb-3">
                                   <label class="form-label">Telefone</label>
-                                  <input class="form-control" type="text" name="telefone" id="telefone" placeholder="11999999999" required/>
+                                  <input class="form-control" type="text" name="telefone" id="telefone" placeholder="11999999999" />
                                 </div>
                               </div>
                               

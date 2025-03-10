@@ -98,7 +98,7 @@ $username = $_SESSION['nome'];
                               <div class="col-md-4">
                                 <div class="mb-3">
                                   <label class="form-label">Profissão</label>
-                                  <input class="form-control" type="text" name="profissao" placeholder="Informe a profissão" required/>
+                                  <input class="form-control" type="text" name="profissao" placeholder="Informe a profissão" />
                                 </div>
                               </div>
                               <div class="col-md-4">
@@ -130,7 +130,7 @@ $username = $_SESSION['nome'];
                               <div class="col-sm-6 col-md-4">
                                 <div class="mb-3">
                                   <label class="form-label">Telefone</label>
-                                  <input class="form-control" type="text" name="telefone" placeholder="11999999999" required/>
+                                  <input class="form-control" type="text" name="telefone" placeholder="11999999999" />
                                 </div>
                               </div>
                               <div class="col-sm-6 col-md-4">
