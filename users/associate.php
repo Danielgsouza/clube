@@ -1,5 +1,10 @@
 <?php 
   session_start();
+  if (!isset($_SESSION['nome'])) {
+    header("Location: ../index.php");
+    exit();
+  }
+  $username = $_SESSION['nome'];
 ?>
 <!DOCTYPE html >
 <html lang="pt-br">
@@ -82,12 +87,12 @@
                             <th>STATUS</th>
                             <th>CPF</th>
                             <th>NOME</th>
-                            <th>ESTADO CIVIL</th>
+                            <!-- <th>ESTADO CIVIL</th> -->
                             <th>PROFISSÃO</th>
-                            <th>DATA DE NASCIMENTO</th>
+                            <th>DATA DE NASC.</th>
                             <th>TELEFONE</th>
                             <th>ENDEREÇO</th>
-                            <th>EMAIL</th>
+                            <!-- <th>EMAIL</th> -->
                             <th>AÇÕES</th>
                           </tr>
                         </thead>
@@ -117,7 +122,7 @@
           <div class="modal-body">
             <div class="card-container" id="card-container">
               <!-- FRENTE -->
-              <div class="card-layout front">
+              <div class="card-layout front" id="card-front">
                 <div class="header">
                   <img class="img-fluid for-dark" style="width: 150px;" src="../assets/images/logo/logo6.png" alt="logo" />
                   <p>Carteira de Identificação do Associado</p>
@@ -128,30 +133,36 @@
                   </div>
                   <div class="info">
                     <p><strong>Nome:</strong> <span id="modal-nome"></span></p>
+                    <p><strong>Título:</strong> <span id="modal-titulo"></span></p>
                     <p><strong>CPF:</strong> <span id="modal-cpf"></span></p>
-                    <!-- <p><strong>RA:</strong> 2023101234</p>
-                    <p><strong>Curso:</strong> Engenharia de Software</p>
-                    <p><strong>Nível do Curso:</strong> Graduação</p>
-                    <p><strong>Unidade:</strong> Bragança Paulista</p> -->
+                    <p><strong>Tipo:</strong> <span></span>Titular</p>
+                  </div>
+                  <div class="qrcode d-none" id="qrCodeFront">
+                    <img id="modal-qrCode-front" src="" alt="QR Code" />
                   </div>
                 </div>
               </div>
 
               <!-- VERSO -->
-              <div class="card-layout back">
+              <div class="card-layout back" id="card-back">
                 <div class="header">
                   <img class="img-fluid for-dark" style="width: 150px;" src="../assets/images/logo/logo6.png" alt="logo" />
                   <p>Carteira de Identificação do Associado</p>
                 </div>
-                <div class="back-content">
+                <div class="back-content d-none" id="qrCodeBack">
                   <div class="qrcode">
-                    <img id="modal-qrCode" src="" alt="QR Code" />
+                    <img id="modal-qrCode-back" src="" alt="QR Code" />
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
+            <div class="mx-auto">
+              <button id="btn-fisico" class="btn btn-info">Fisica</button>
+              <button id="btn-digital" class="btn btn-info">Digital</button>
+              <!-- <button id="btn-digital" class="btn btn-info">QR Code</button> -->
+            </div>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             <button id="download-image" class="btn btn-primary">Baixar Carteirinha</button>
           </div>

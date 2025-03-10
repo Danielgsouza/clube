@@ -108,7 +108,9 @@ cadUsuarioForm.addEventListener("submit", function(e){
         const dados = await response;
 
         if (dados.status == 200) {
-           await notyf.success('Dados salvos com sucesso!');
+          var button = document.getElementById("btn-submit");
+          button.classList.add("disabled");
+          await notyf.success('Dados salvos com sucesso!');
            setTimeout(() => {
             window.location.href = "./users.php";
           }, 2400);

@@ -2,6 +2,11 @@
 session_start();
 require_once('../server/config.php');
 include 'qrcode.php';
+if (!isset($_SESSION['nome'])) {
+  header("Location: ../index.php");
+  exit();
+}
+$username = $_SESSION['nome'];
 // Verificar tipo da chamada (Navbar ou Sidebar)
 $type = isset($_POST['type']) ? $_POST['type'] : "";
 
@@ -177,7 +182,7 @@ if ($type === 'navbar') {
                       </div>
                     </div>
                     <div class="card-footer text-end">
-                      <button class="btn btn-primary" type="submit">Salvar</button>
+                      <button class="btn btn-primary" type="submit" id="btn-submit">Salvar</button>
                     </div>
                   </form>
                 </div>

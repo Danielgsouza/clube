@@ -61,7 +61,7 @@ try {
   }
 
   // Endereço do diretório
-  $diretorio = "../../users/uploads/";
+  $diretorio = "../uploads/";
 
   // Criar o diretório se não existir
   if (!is_dir($diretorio)) {
@@ -70,7 +70,7 @@ try {
 
   // Verificar se já existe uma imagem associada ao CPF do usuário
   $imagemExistente = glob($diretorio . $cpf . '.*'); // Procurar qualquer arquivo com o CPF como nome, de qualquer extensão
-
+  
   // Receber os arquivos do formulário
   $arquivo = $_FILES['foto'];
 
@@ -120,10 +120,11 @@ try {
     }
     
     // Caso o upload não tenha ocorrido, mas a imagem já exista, mantém a imagem existente
-    $retorna = ['status' => true, 'msg' => "Nenhuma nova imagem foi enviada. A imagem existente foi mantida."];
+    // $retorna = ['status' => true, 'msg' => "Nenhuma nova imagem foi enviada. A imagem existente foi mantida."];
     echo json_encode($retorna);
     exit;
   }
+
 
 } catch (PDOException $e) {
   $retorna = ['status' => false, 'msg' => "Erro: " . $e->getMessage()];

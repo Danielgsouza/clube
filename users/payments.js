@@ -31,10 +31,7 @@ const getPayments = async (cpf) => {
     if (dados && dados.status && dados.data) {
       return dados.data; // Retorna a chave 'data' que contém os pagamentos
     } 
-    // else {
-      // Swal.fire('Erro!', dados.msg || 'Dados de pagamento não encontrados.', 'error');
-      // return null;
-    // }
+   
   } catch (error) {
     console.error('Erro ao enviar os dados:', error);
     Swal.fire('Erro!', 'Ocorreu um erro ao carregar os dados. Tente novamente.', 'error');
@@ -63,6 +60,7 @@ const paymentsTable = (payments) => {
     htmlBody += `<td>`;
     htmlBody += `<ul>`;
     htmlBody += `<a href="#" class="mx-1 edit-link" data-id="${element.id}" data-nome="${element.nome}" data-cpf="${element.cpf}" data-mes="${element.mes}" data-ano="${element.ano}" data-valor="${element.valor}"><i class="fas fa-edit"></i></a>`;
+    htmlBody += `<a href="#" class="delete-payments" data-id="${element.id}"><i class='fas fa-trash'></i></a>`;
     htmlBody += `</ul>`;
     htmlBody += `</td>`;
     htmlBody += `</tr>`;
@@ -87,17 +85,58 @@ const paymentsTable = (payments) => {
   });
 };
 
-const cadPagamentoForm = document.getElementById("pagamentos-form");
 var notyf = new Notyf({
   position: {
     x: 'right',
     y: 'top',
   },
 });
+
+// Evento de exclusão do usuário
+$(document).on('click', '.delete-payments', async function(event) {
+  event.preventDefault();
+
+  const userId = $(this).data('id');
+  Swal.fire({
+    title: 'Você tem certeza?',
+    text: "Deseja excluir esse lançamento?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sim, excluir!',
+    cancelButtonText: 'Cancelar'
+  }).then(async (result) => {
+    if (result.isConfirmed) {
+      try {
+        const response = await fetch(`./queries/sql_delete_payments.php`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id: userId })
+        });
+        const result = await response.json();
+        console.log(result);
+        if (result.status === 'success') {
+          await notyf.success('Lançamento excluído com sucesso!');
+          // Remover a linha da tabela
+          $(this).closest('tr').remove();
+        } else {
+          notyf.error('Erro ao excluir o lançamento.');
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        notyf.error('Ocorreu um erro ao excluir o lançamento. Tente novamente.');
+      }
+    }
+  });
+});
+
+const cadPagamentoForm = document.getElementById("pagamentos-form");
 cadPagamentoForm.addEventListener("submit", function(e){
   e.preventDefault();
   const dadosForm = new FormData(cadPagamentoForm);
-  console.log(dadosForm);
   Swal.fire({
     title: 'Você tem certeza?',
     text: "Deseja salvar este Pagamento?",
@@ -125,6 +164,10 @@ cadPagamentoForm.addEventListener("submit", function(e){
           await notyf.success('Dados salvos com sucesso!');
           clearFields()
           $('#div_payments').hide();
+
+          const cpf = $('input[name="cpf"]').val();
+          const responsePayment = await getPayments(cpf);
+          paymentsTable(responsePayment);
           
         } else {
           await notyf.error(dados.msg);

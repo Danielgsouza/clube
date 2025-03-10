@@ -93,9 +93,13 @@
                                 </div>
                               </div>
                               <div class="col-sm-6 col-md-4">
+                                <?php
+                                  // Obtém a data atual no formato YYYY-MM-DD
+                                  $today = date("Y-m-d");
+                                  ?>
                                 <div class="mb-3">
                                   <label class="form-label">Data de Nascimento</label>
-                                  <input class="form-control" type="date" name="data_nascimento" id="nasc" required/>
+                                  <input class="form-control" type="date" name="data_nascimento" id="nasc" max="<?php echo $today; ?>" required/>
                                 </div>
                               </div>
                               <div class="col-sm-6 col-md-4">

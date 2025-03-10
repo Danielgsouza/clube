@@ -54,8 +54,6 @@ const getDepedents = async (titularId) => {
  
   } catch (error) {
     notyf.error('Erro!', 'Ocorreu um erro ao enviar os dados. Tente novamente.', 'error');
-    // console.error('Erro ao enviar os dados:', error);
-    // Swal.fire('Erro!', 'Ocorreu um erro ao carregar os dados. Tente novamente.', 'error');
   }
 }
 

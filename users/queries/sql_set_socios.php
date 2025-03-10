@@ -68,44 +68,6 @@ try {
     }
   }
 
-  // Endereço do diretório
-  $diretorio = "../../users/uploads/";
-
-  // Criar o diretório se não existir
-  if (!is_dir($diretorio)) {
-    mkdir($diretorio, 0755, true);
-  }
-
-  // Receber os arquivos do formulário
-  $arquivo = $_FILES['foto'];
-
-  // Verificar se o arquivo foi enviado
-  if ($arquivo['error'] == UPLOAD_ERR_OK) {
-    // Criar o nome do arquivo usando o CPF do usuário
-    $nome_arquivo = $cpf . '.' . pathinfo($arquivo['name'], PATHINFO_EXTENSION);
-
-    // Criar o endereço de destino da imagem
-    $destino = $diretorio . $nome_arquivo;
-    move_uploaded_file($arquivo['tmp_name'], $destino);
-    // Mover o arquivo para o diretório de destino
-    // if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
-    //     // Salvar o caminho do arquivo e o CPF do usuário no banco de dados
-    //     $query_imagem = "INSERT INTO imagens (nome_imagem, caminho_imagem, usuario_id) VALUES (:nome_imagem, :caminho_imagem, :usuario_id)";
-    //     $cad_imagem = $pdo->prepare($query_imagem);
-    //     $cad_imagem->bindParam(':nome_imagem', $nome_arquivo);
-    //     $cad_imagem->bindParam(':caminho_imagem', $destino);
-    //     $cad_imagem->bindParam(':usuario_id', $cpf);
-
-    //     if ($cad_imagem->execute()) {
-    //         $retorna['msg'] .= " Imagem enviada com sucesso!";
-    //     } else {
-    //         $retorna['msg'] .= " Erro ao salvar a imagem no banco de dados.";
-    //     }
-    // } else {
-    //     $retorna['msg'] .= " Erro ao fazer upload da imagem.";
-    // }
-  }
-
   if(isset($_POST['cpf'])){
     // Obtém o CPF
     $text = $_POST['cpf'];
@@ -135,6 +97,105 @@ try {
     // Define o caminho do QR Code para exibição
     $qrCodeFileName = $file; // Salva o caminho do arquivo
   }
+
+  // Endereço do diretório onde as imagens serão armazenadas
+  $diretorio = "../../users/uploads/";
+
+  // Criar o diretório se não existir
+  if (!is_dir($diretorio)) {
+    mkdir($diretorio, 0755, true);
+  }
+
+  // Verificar se o CPF foi enviado
+  if (isset($_POST['cpf'])) {
+    // Obtém o CPF do POST
+    $cpf = $_POST['cpf'];
+    
+    // Verificar se existe uma imagem associada ao CPF do usuário
+    $imagemExistente = glob($diretorio . $cpf . '.*'); // Procurar qualquer arquivo com o CPF como nome, de qualquer extensão
+
+    // Receber os arquivos do formulário
+    $arquivo = $_FILES['foto'];
+
+    // Verificar se o arquivo foi enviado
+    if ($arquivo['error'] == UPLOAD_ERR_OK) {
+      // Validar tipo de arquivo (exemplo para imagens JPEG ou PNG)
+      $extensao = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
+      if (!in_array($extensao, ['jpg', 'jpeg', 'png'])) {
+        $retorna = ['status' => false, 'msg' => "Erro: O arquivo deve ser uma imagem JPG ou PNG!"];
+        echo json_encode($retorna);
+        exit;
+      }
+
+      // Se já existir uma imagem associada ao CPF, excluir a imagem antiga
+      if (!empty($imagemExistente)) {
+        // Excluir a imagem antiga
+        $imagemAntiga = $imagemExistente[0];
+        if (!unlink($imagemAntiga)) {
+          $retorna = ['status' => false, 'msg' => "Erro: Não foi possível excluir a imagem existente."];
+          echo json_encode($retorna);
+          exit;
+        }
+      }
+
+      // Criar o nome do arquivo usando o CPF do usuário
+      $nome_arquivo = $cpf . '.' . $extensao;
+
+      // Criar o endereço de destino da imagem
+      $destino = $diretorio . $nome_arquivo;
+
+      // Mover o arquivo para o diretório de destino
+      if (move_uploaded_file($arquivo['tmp_name'], $destino)) {
+        $retorna = ['status' => true, 'msg' => "Imagem atualizada com sucesso!"];
+        echo json_encode($retorna);
+        exit;
+      } else {
+        $retorna = ['status' => false, 'msg' => "Erro: Não foi possível mover a imagem para o diretório de destino."];
+        echo json_encode($retorna);
+        exit;
+      }
+    } else {
+      // Caso nenhum arquivo tenha sido enviado (erro de upload ou nenhum arquivo)
+      // if (empty($imagemExistente)) {
+      //   $retorna = ['status' => false, 'msg' => "Erro: Nenhuma imagem foi enviada e não há imagem existente para manter."];
+      //   echo json_encode($retorna);
+      //   exit;
+      // }
+      
+      // Caso o upload não tenha ocorrido, mas a imagem já exista, mantém a imagem existente
+      echo json_encode(['status' => true, 'msg' => "Nenhuma nova imagem foi enviada. A imagem existente foi mantida."]);
+      exit;
+    }
+
+    // Geração do QR Code
+    $name = $cpf . ".png"; // Define o nome do arquivo do QR Code
+    $file = "../qrcode/{$name}"; // Define o caminho para salvar o QR Code
+
+    // Verifica se a pasta qrcode existe e cria se não existir
+    if (!is_dir('../qrcode/')) {
+      mkdir('../qrcode/', 0755, true);
+    }
+
+    $options = array(
+      'w' => 400,
+      'h' => 400,
+    );
+
+    $generator = new QRCode($cpf, $options); // Gerador de QR Code usando o CPF
+    $image = $generator->render_image();
+    
+    // Salva a imagem do QR Code na pasta qrcode
+    imagepng($image, $file);
+    imagedestroy($image);
+
+    // Define o caminho do QR Code para exibição
+    $qrCodeFileName = $file;
+    
+    // Exibir a mensagem de sucesso
+    echo json_encode(['status' => true, 'msg' => "QR Code gerado com sucesso!", 'qrCode' => $qrCodeFileName]);
+    exit;
+  }
+
 
 } catch (PDOException $e) {
   $retorna = ['status' => false, 'msg' => "Erro: " . $e->getMessage()];
