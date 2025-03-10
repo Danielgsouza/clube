@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", async function() {
       htmlBody += `<td>${element.created_at}</td>`;
       htmlBody += `<td>`;
       htmlBody += `<ul>`;
-
       htmlBody += `<a href="new-dependents.php?id=${element.id}&nome=${encodeURIComponent(element.nome)}&cpf=${element.cpf}&titulo=${encodeURIComponent(element.titulo)}&titular_id=${encodeURIComponent(element.titular_id)}&data_nascimento=${encodeURIComponent(element.data_nascimento)}&telefone=${element.telefone}&status=${element.status}" class="mx-1 edit-link"><i class="fas fa-edit"></i></a>`;
       
       htmlBody += `<a href="../users/payments.php?id=${element.id}&nome=${encodeURIComponent(element.nome)}&cpf=${element.cpf}" class="mx-1"><i class='fas fa-dollar-sign'></i></a>`;

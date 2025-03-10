@@ -122,9 +122,11 @@ $username = $_SESSION['nome'];
                                 <div class="mb-3">
                                 <?php
                                   $currentDate = date('Y-m-d'); // Obter a data atual no formato 'YYYY-MM-DD'
+                                  $minDate = '1900-01-01'; // Definir a data mínima como 1º de janeiro de 1900
+
                                 ?>
                                 <label class="form-label">Data de Nascimento</label>
-                                <input class="form-control" type="date" name="data_nascimento"  max="<?php echo $currentDate; ?>" required/>
+                                <input class="form-control" type="date" name="data_nascimento" min="<?php echo $minDate; ?>" max="<?php echo $currentDate; ?>"/>
                                 </div>
                               </div>
                               <div class="col-sm-6 col-md-4">

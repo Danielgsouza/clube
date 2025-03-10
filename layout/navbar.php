@@ -41,7 +41,7 @@
                     <div class="user-wrap">
                         <div class="user-img bg-transparent">
                             <!-- A imagem será carregada dinamicamente via JavaScript -->
-                            <img id="user-image" src="" alt="user" />
+                            <img id="user-image" src="<?php echo $imagePath; ?>"  alt="user" />
                         </div>
                         <div class="user-content">
                             <h6 id="user-name"><?php echo $nome; ?></h6>
