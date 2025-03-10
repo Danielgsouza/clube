@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['nome'])) {
+  header("Location: ../index.php");
+  exit();
+}
+$username = $_SESSION['nome'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

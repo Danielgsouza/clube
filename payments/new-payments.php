@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION['nome'])) {
+  header("Location: ../index.php");
+  exit();
+}
+$username = $_SESSION['nome'];
 ?>
 
 <!DOCTYPE html>
@@ -145,7 +150,7 @@ session_start();
                       </div>
                     </div>
                     <div class="card-footer text-end">
-                      <button class="btn btn-primary" type="submit">Salvar</button>
+                      <button class="btn btn-primary" type="submit" id="btn-submit">Salvar</button>
                     </div>
                   </form>
                 </div>
