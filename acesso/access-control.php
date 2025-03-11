@@ -35,36 +35,44 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
     <link rel="stylesheet" href="../assets/css/notyf.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      .hidden-input {
+        position: absolute;
+        left: -9999px;
+      }
+    </style>
   </head>
   <body>
-    <!-- page-wrapper Start-->
+
     <!-- tap on top starts-->
     <div class="tap-top"><i class="iconly-Arrow-Up icli"></i></div>
     <!-- tap on tap ends-->
+
     <!-- loader-->
     <div class="loader-wrapper">
-  
       <div class="loader"><span></span><span></span><span></span><span></span><span></span></div>
     </div>
-  
-    <!-- <form id="access-control-form" class="card" method="post" enctype="multipart/form-data">
-      <input type="text" class="bg-transparent border-0" style="z-index: -1; position: relative;" id="socio-id" name="cpf"/>
-    </form> -->
+ 
     <div class="page-wrapper compact-wrapper" id="pageWrapper"> 
       <!-- Page Body Start-->
       <!--<div class="page-body-wrapper"> -->
-        <!-- Page sidebar start-->
-        <!-- Page sidebar end-->
         <div class="page-body">
           <div class="container-fluid">
             <div class="page-title">
-              <div class="row">
-                <div class="col-sm-6 col-12"> 
-                  <h2>Controle de Acesso</h2>
+              <div class="d-flex">
+                <!-- <a class="logo" href="index.php"> -->
+                  <!-- <img class="img-fluid for-light m-auto" src="../assets/images/logo/logo1.png" alt="looginpage" /> -->
+                  <img class="img-fluid for-dark mx-auto" style="width: 200px;"src="../assets/images/logo/logo7.png" alt="logo" />
+                <!-- </a> -->
+              </div>
+              <div class="row my-3">
+                <div class="col-sm-12 col-12 text-center text-bold"> 
+                  <h1>Controle de Acesso</h1>
                 </div>
-                <div class="card">
+                <div class="card" style="border: 2px solid #000">
                 <form id="access-control-form" class="card" method="post" enctype="multipart/form-data">
-                  <input type="text" class="border-0 bg-transparent" id="socio-id" name="socio-id"/>
+                  <input type="text" class="hidden-input" id="socio-id" name="socio-id"/>
                 </form>
                   <div class="card-body">
                     <div class="row">
@@ -74,7 +82,7 @@
                               <div class="mb-3">
                                 <label class="form-label" style="font-size: 1.5rem;">Nome Completo</label>
                                 <div class="form-control-plaintext">
-                                  <span id="nome"></span>
+                                  <span id="nome" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
@@ -82,7 +90,7 @@
                               <div class="mb-3">
                                 <label class="form-label" style="font-size: 1.5rem;">CPF</label>
                                 <div class="form-control-plaintext">
-                                  <span id="cpf"></span>
+                                  <span id="cpf" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
@@ -90,19 +98,19 @@
                               <div class="mb-3">
                                 <label class="form-label" style="font-size: 1.5rem;">Status</label>
                                 <div class="form-control-plaintext">
-                                  <span id="status" ></span>
+                                  <span id="status" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
                             </div>
 
-                            <div class="col-sm-6 col-md-12 d-flex">
+                            <!-- <div class="col-sm-6 col-md-12 d-flex">
                               <div class="mb-3 mx-auto">
-                                <!-- <label class="form-label">Status</label> -->
+                                <label class="form-label">Status</label>
                                 <div class="form-control-plaintext">
                                   <span class="text-center" id="status-icon" style="font-size: 1.5rem;"></span>
                                 </div>
                               </div>
-                            </div>
+                            </div> -->
                           </div>
                       </div>
                       <div class="col-md-4 d-flex flex-column align-items-center">
@@ -114,6 +122,7 @@
                   </div>
                 </div>               
               </div>
+          
             </div>
           </div>
           <!-- Container-fluid starts-->

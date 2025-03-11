@@ -45,7 +45,7 @@ const handleSubmit = async () => {
     document.getElementById('cpf').textContent = socio.cpf;
     document.getElementById('status').innerHTML = dados.status ? '<span class="text-success"><i class="fas fa-check text-success"></i> Ativo</span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger"></i> Pendente</span>';
 
-    document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
+    // document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
 
     // Tentativa de carregar a imagem com diferentes extensões
     const imagePathBase = `../users/uploads/${socio.cpf}`;
@@ -95,7 +95,7 @@ const handleSubmit = async () => {
       document.getElementById('nome').textContent = '';
       document.getElementById('cpf').textContent = '';
       document.getElementById('status').textContent = '';
-      document.getElementById('status-icon').textContent = '';
+      // document.getElementById('status-icon').textContent = '';
       document.getElementById('foto-preview').src = '../assets/images/avatar/icon.png';
 
     }, 3000);
