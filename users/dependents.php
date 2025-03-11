@@ -155,9 +155,7 @@
                               <th>NOME</th>
                               <th>CPF</th>
                               <th>Nº TÍTULO/th>
-                              <th>DATA DE NASCIMENTO</th>
                               <th>TELEFONE</th>
-                              <th>CRIADO EM</th>
                               <th>AÇÕES</th>
                             </tr>
                           </thead>
@@ -171,7 +169,6 @@
               </div>
             </div>
           </div>
-          
           <?php require("../layout/footer.php") ?>
         </div>
       </div>

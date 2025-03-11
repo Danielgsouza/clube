@@ -99,7 +99,7 @@ try {
   }
 
   // Endereço do diretório onde as imagens serão armazenadas
-  $diretorio = "../../users/uploads/";
+  $diretorio = "../uploads/";
 
   // Criar o diretório se não existir
   if (!is_dir($diretorio)) {

@@ -61,7 +61,7 @@ try {
   }
 
   // Endereço do diretório
-  $diretorio = "../../users/uploads/";
+  $diretorio = "../uploads/";
 
   // Criar o diretório se não existir
   if (!is_dir($diretorio)) {

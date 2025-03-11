@@ -157,15 +157,14 @@
                         <table class="table table-responsive display" id="table-dependents">
                           <thead>
                             <tr>
-                              <th>Status</th>
-                              <th>Titular</th>
-                              <th>Nome</th>
+                              <th>STATUS</th>
+                              <th>TITULAR</th>
+                              <th>NOME</th>
                               <th>CPF</th>
-                              <th>Nº Título</th>
-                              <th>Data de Nascimento</th>
-                              <th>Telefone</th>
-                              <th>Criado Em</th>
-                              <th>Ações</th>
+                              <th>Nº TÍTULO</th>
+                              <th>DATA NASCIMENTO</th>
+                              <th>TELEFONE</th>
+                              <th>AÇÕES</th>
                             </tr>
                           </thead>
                           <tbody id="tbody">

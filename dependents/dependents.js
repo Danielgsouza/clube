@@ -20,15 +20,16 @@ document.addEventListener("DOMContentLoaded", async function() {
       htmlBody += `<td>${element.titulo}</td>`;
       htmlBody += `<td>${dataNascimento}</td>`;
       htmlBody += `<td>${element.telefone}</td>`;
-      htmlBody += `<td>${element.created_at}</td>`;
       htmlBody += `<td>`;
       htmlBody += `<ul>`;
+
       htmlBody += `<a href="new-dependents.php?id=${element.id}&nome=${encodeURIComponent(element.nome)}&cpf=${element.cpf}&titulo=${encodeURIComponent(element.titulo)}&titular_id=${encodeURIComponent(element.titular_id)}&data_nascimento=${encodeURIComponent(element.data_nascimento)}&telefone=${element.telefone}&status=${element.status}" class="mx-1 edit-link"><i class="fas fa-edit"></i></a>`;
       
       htmlBody += `<a href="../users/payments.php?id=${element.id}&nome=${encodeURIComponent(element.nome)}&cpf=${element.cpf}" class="mx-1"><i class='fas fa-dollar-sign'></i></a>`;
 
       htmlBody += `<a href="#" class="mx-1 view-carteirinha" data-toggle="modal" data-target="#carteirinhaModal" data-id="${element.id}" data-nome="${encodeURIComponent(element.nome)}" data-cpf="${element.cpf}" data-data_nascimento="${encodeURIComponent(element.data_nascimento)}" data-telefone="${element.telefone}" data-titulo="${element.titulo}" data-tipo=""><i class="fa-solid fa-address-card"></i></a>`;
       htmlBody += `<a href="#" class="download-qrcode mx-1" data-cpf="${element.cpf}"><i class='fas fa-qrcode'></i></a>`;
+ 
       htmlBody += `<a href="#" class="delete-dependents" data-id="${element.id}"><i class='fas fa-trash'></i></a>`;
       htmlBody += `</ul>`;
       htmlBody += `</td>`;
