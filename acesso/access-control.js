@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", function() {
   inputCpf.focus();
 });
 
-inputCpf.addEventListener("input", function() {
-  if(inputCpf.value.length == 11){
-    handleSubmit()
-  }
-});
+// inputCpf.addEventListener("input", function() {
+//   if(inputCpf.value.length == 11){
+//     handleSubmit()
+//   }
+// });
 
 inputCpf.addEventListener("focusout", function() {
   setTimeout(() => {
@@ -23,7 +23,8 @@ var notyf = new Notyf({
   },
 });
 
-const handleSubmit = async () => {
+document.getElementById("access-control-form").addEventListener("submit", async function (event) {
+  event.preventDefault(); // Impede o recarregamento da página
   var form = new FormData(document.getElementById("access-control-form"));
   console.log(form)
   try {
@@ -108,4 +109,4 @@ const handleSubmit = async () => {
   }catch (error) {
     console.log(error);
   }
-}
+});

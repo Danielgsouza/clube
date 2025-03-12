@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
     $('select[name="status"]').val(status);
 
     // Tentativa de carregar a imagem com diferentes extensões
-    const imagePathBase = `../dependents/uploads/${cpf}`;
+    const imagePathBase = `../users/uploads/${cpf}`;
     const imageExtensions = ['.png', '.jpg', '.jpeg']; // Extensões possíveis
     let imagePath = null;
 

@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async function() {
     $('#modal-titulo').text(decodeURIComponent(element.titulo));
 
     // Carregar a imagem do dependente
-    const imagePathBase = `../dependents/uploads/${element.cpf}`;
+    const imagePathBase = `../users/uploads/${element.cpf}`;
     const imageExtensions = ['.png', '.jpg', '.jpeg']; // Extensões possíveis
     const imgElement = document.getElementById('preview');
 
