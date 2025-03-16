@@ -21,31 +21,6 @@ try {
         $pagamento = $stmt->fetch(PDO::FETCH_ASSOC);
       
         // Verifica a data do último pagamento
-        //     $mes_pagamento = $pagamento['mes'];
-        //     $ano_pagamento = date('Y'); // Supondo que o ano atual seja o ano do pagamento
-        //     $data_pagamento = DateTime::createFromFormat('Y-m', "$ano_pagamento-$mes_pagamento");
-        //     $data_atual = new DateTime();
-    
-        
-        //     // Comparar o mês e o ano do pagamento com o mês e o ano atuais
-        //     if (($data_pagamento->format('Y-m') - $data_atual->format('Y-m')) > 45) {
-        //         // Pagamento do mês atual
-        //         echo json_encode([
-        //             'status' => true,
-        //             'data' => [$pagamento]
-        //         ]);
-        //     } else {
-        //         // Pagamento desatualizado
-        //         echo json_encode([
-        //             'status' => false,
-        //             'data' => [$pagamento]
-        //         ]);
-        //     }
-        // } else {
-        //     // Retorna mensagem de erro caso não haja resultados
-        //     echo json_encode(['status' => false, 'data' => []]);
-        // }
-        // Verifica a data do último pagamento
         $mes_pagamento = $pagamento['mes'];
         $ano_pagamento = date('Y'); // Supondo que o ano atual seja o ano do pagamento
         $data_pagamento = DateTime::createFromFormat('Y-m', "$ano_pagamento-$mes_pagamento");
