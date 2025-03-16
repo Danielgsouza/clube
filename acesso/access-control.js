@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", function() {
   inputCpf.focus();
 });
 
-
 inputCpf.addEventListener("focusout", function() {
   setTimeout(() => {
     inputCpf.focus();
