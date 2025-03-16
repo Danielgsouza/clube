@@ -17,25 +17,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200;6..12,300;6..12,400;6..12,500;6..12,600;6..12,700;6..12,800;6..12,900;6..12,1000&amp;display=swap" rel="stylesheet">
     <!-- Flag icon css -->
-    <link rel="stylesheet" href="../../assets/css/vendors/flag-icon.css">
+    <link rel="stylesheet" href="../assets/css/vendors/flag-icon.css">
     <!-- iconly-icon-->
-    <link rel="stylesheet" href="../../assets/css/iconly-icon.css">
-    <link rel="stylesheet" href="../../assets/css/bulk-style.css">
+    <link rel="stylesheet" href="../assets/css/iconly-icon.css">
+    <link rel="stylesheet" href="../assets/css/bulk-style.css">
     <!-- iconly-icon-->
-    <link rel="stylesheet" href="../../assets/css/themify.css">
+    <link rel="stylesheet" href="../assets/css/themify.css">
     <!--fontawesome-->
-    <link rel="stylesheet" href="../../assets/css/fontawesome-min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome-min.css">
     <!-- Whether Icon css-->
-    <link rel="stylesheet" type="text/css" href="../../assets/css/vendors/weather-icons/weather-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/vendors/scrollbar.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/vendors/datatables.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/vendors/slick.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/css/vendors/slick-theme.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/weather-icons/weather-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/scrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/datatables.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick.css">
+    <link rel="stylesheet" type="text/css" href="../assets/css/vendors/slick-theme.css">
     <!-- App css -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
-    <link id="color" rel="stylesheet" href="../../assets/css/color-1.css" media="screen">
-    <link rel="stylesheet" href="../../assets/css/notyf.min.css">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
+    <link rel="stylesheet" href="../assets/css/notyf.min.css">
+
     <style>
       .hidden-input {
         position: absolute;
@@ -63,7 +63,7 @@
               <div class="d-flex">
                 <!-- <a class="logo" href="index.php"> -->
                   <!-- <img class="img-fluid for-light m-auto" src="../assets/images/logo/logo1.png" alt="looginpage" /> -->
-                  <img class="img-fluid for-dark mx-auto" style="width: 200px;"src="../../assets/images/logo/logo7.png" alt="logo" />
+                  <img class="img-fluid for-dark mx-auto" style="width: 200px;"src="../assets/images/logo/logo7.png" alt="logo" />
                 <!-- </a> -->
               </div>
               <div class="row my-3">
@@ -115,7 +115,7 @@
                       </div>
                       <div class="col-md-4 d-flex flex-column align-items-center">
                           <div class="mb-3 mx-auto">
-                              <img id="foto-preview" src="../../assets/images/avatar/icon.png" alt="Foto do Sócio" class="img-thumbnail rounded-circle" style="width: 200px; height: 200px; object-fit: cover;"/>
+                              <img id="foto-preview" src="../assets/images/avatar/icon.png" alt="Foto do Sócio" class="img-thumbnail rounded-circle" style="width: 200px; height: 200px; object-fit: cover;"/>
                           </div>
                       </div>
                     </div>
@@ -131,7 +131,7 @@
     </div>
     <!--scripts-->
     <?php require("../utils/scripts.php")?>
-    <script src="../../assets/js/notyf/notyf.min.js"></script>
+    <script src="./../assets/js/notyf/notyf.min.js"></script>
     <script src="./access-control.js"></script>
   </body>
 </html>
