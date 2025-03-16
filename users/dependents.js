@@ -103,7 +103,35 @@ const dependentsTable = (associate) => {
     $('#nasc').val(dataNascimento);
     $('#telefone').val(element.telefone);
 
-    const imagePath = `../users/uploads/${element.cpf}.png`;
+    const imagePathBase = `../users/uploads/${cpf}`;
+    const imageExtensions = ['.png', '.jpg', '.jpeg'];
+    let imagePath = null;
+
+    function checkImage(extension) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = `${imagePathBase}${extension}`;
+        img.onload = () => resolve(`${imagePathBase}${extension}`);
+        img.onerror = () => reject();
+      });
+    }
+
+    (async function loadImage() {
+      try {
+        for (let ext of imageExtensions) {
+          try {
+            imagePath = await checkImage(ext);
+            $('#foto-preview').attr('src', imagePath);
+            return;
+          } catch (error) {
+            continue;
+          }
+        }
+        $('#foto-preview').attr('src', '../assets/images/avatar/icon.png');
+      } catch (error) {
+        $('#foto-preview').attr('src', '../assets/images/avatar/icon.png');
+      }
+    })();
 
     $('#foto-preview').attr('src', imagePath).on('error', function() {
       $(this).attr('src', '../assets/images/avatar/icon.png');
