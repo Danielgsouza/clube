@@ -18,6 +18,7 @@ var notyf = new Notyf({
 });
 
 document.getElementById("access-control-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
   var form = new FormData(document.getElementById("access-control-form"));
   console.log(form)
   try {
