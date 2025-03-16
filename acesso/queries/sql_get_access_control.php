@@ -25,25 +25,25 @@ try {
         $ano_pagamento = date('Y'); // Supondo que o ano atual seja o ano do pagamento
         $data_pagamento = DateTime::createFromFormat('Y-m', "$ano_pagamento-$mes_pagamento");
         $data_atual = new DateTime();
- 
-       
-        // Comparar o mês e o ano do pagamento com o mês e o ano atuais
-        if ($data_pagamento->format('Y-m') == $data_atual->format('Y-m')) {
-            // Pagamento do mês atual
-            echo json_encode([
-                'status' => true,
-                'data' => [$pagamento]
-            ]);
-        } else {
-            // Pagamento desatualizado
+
+        // Adiciona 60 dias à data do pagamento para comparar com a data atual
+        $data_limite = clone $data_pagamento; // Clona a data de pagamento para não modificar a original
+        $data_limite->add(new DateInterval('P60D')); // Adiciona 60 dias à data do pagamento
+
+        // Comparar se a data atual é superior a 60 dias após o pagamento
+        if ($data_atual > $data_limite) {
+            // Prazo superior a 60 dias
             echo json_encode([
                 'status' => false,
                 'data' => [$pagamento]
             ]);
+        } else {
+            // Prazo dentro de 60 dias
+            echo json_encode([
+                'status' => true,
+                'data' => [$pagamento]
+            ]);
         }
-    } else {
-        // Retorna mensagem de erro caso não haja resultados
-        echo json_encode(['status' => false, 'data' => []]);
     }
 } catch (PDOException $e) {
     // Retorna mensagem de erro em caso de exceção
