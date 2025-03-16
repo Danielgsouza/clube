@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../server/config.php');
+require_once('../server/config.php');
 
 // Receber os dados do formulário (no caso, o CPF)
 $ArrayDados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
