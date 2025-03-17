@@ -1,6 +1,6 @@
 <?php
 
-require_once('../server/config.php');
+require_once('../../server/config.php');
 
 // Receber os dados do formulário (no caso, o CPF)
 $ArrayDados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -15,6 +15,8 @@ try {
     // Executa a consulta
     $stmt->execute();
 
+    echo $stmt;
+    exit;
     // Verifica se a consulta retornou resultados
     if ($stmt->rowCount() > 0) {
         // Obtém os dados como um array associativo
