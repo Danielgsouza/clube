@@ -71,7 +71,7 @@
                 </div>
                 <div class="card" style="border: 2px solid #000">
                 <form id="access-control-form" class="card" method="post" enctype="multipart/form-data">
-                  <input type="text" class="hidden-input" id="socio-id" name="socio-id"/>
+                  <input type="text" id="socio-id" name="socio-id"/>
                 </form>
                   <div class="card-body">
                     <div class="row">
