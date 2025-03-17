@@ -21,11 +21,12 @@ document.getElementById("access-control-form").addEventListener("submit", async 
   event.preventDefault();
   var form = new FormData(document.getElementById("access-control-form"));
 
-  try {
+  // try {
     const response = await fetch("./queries/sql_get_access_control.php", {
       method: "POST",
       body: form,
     });
+    
     const dados = await response.json();
 
     if (dados.data.length === 0) {
@@ -96,9 +97,9 @@ document.getElementById("access-control-form").addEventListener("submit", async 
 
     }, 3000);
 
-  }catch (error) {
-    console.log(error);
-    notyf.error(error);
-    return;
-  }
+  // }catch (error) {
+    // console.log(error);
+    // notyf.error(error);
+    // return;
+  // }
 });
