@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
     <link rel="stylesheet" href="../assets/css/notyf.min.css">
-    <link rel="stylesheet" href="./style.css">
     <style>
       .hidden-input {
         position: absolute;
