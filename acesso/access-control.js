@@ -42,7 +42,8 @@ document.getElementById("access-control-form").addEventListener("submit", async 
 
     document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
 
-    const imagePathBase = `https://adminccm.com/users/uploads/${socio.cpf}`;
+    // const imagePathBase = `https://adminccm.com/users/uploads/${socio.cpf}`;
+    const imagePathBase = ``;
     const imageExtensions = ['.png', '.jpg', '.jpeg']; // Extensões possíveis
     let imagePath = null;
 
