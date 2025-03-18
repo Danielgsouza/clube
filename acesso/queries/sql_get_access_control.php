@@ -20,15 +20,22 @@ try {
         // Obtém os dados como um array associativo
         $pagamento = $stmt->fetch(PDO::FETCH_ASSOC);
       
-        // Verifica a data do último pagamento
+        // Verifica a data do último pagamento (ano e mês)
         $mes_pagamento = $pagamento['mes'];
-        $ano_pagamento = date('Y'); // Supondo que o ano atual seja o ano do pagamento
+        $ano_pagamento = $pagamento['ano']; // Ano do pagamento
         $data_pagamento = DateTime::createFromFormat('Y-m', "$ano_pagamento-$mes_pagamento");
+
+        // Data atual
         $data_atual = new DateTime();
 
         // Adiciona 60 dias à data do pagamento para comparar com a data atual
         $data_limite = clone $data_pagamento; // Clona a data de pagamento para não modificar a original
         $data_limite->add(new DateInterval('P60D')); // Adiciona 60 dias à data do pagamento
+
+        // Para depuração: Exibe as datas de pagamento e limite
+        echo "Data do pagamento: " . $data_pagamento->format('Y-m-d') . "<br>";
+        echo "Data limite (60 dias): " . $data_limite->format('Y-m-d') . "<br>";
+        echo "Data atual: " . $data_atual->format('Y-m-d') . "<br>";
 
         // Comparar se a data atual é superior a 60 dias após o pagamento
         if ($data_atual > $data_limite) {
@@ -44,6 +51,8 @@ try {
                 'data' => [$pagamento]
             ]);
         }
+    } else {
+        echo json_encode(['status' => false, 'msg' => 'Nenhum pagamento encontrado.']);
     }
 } catch (PDOException $e) {
     // Retorna mensagem de erro em caso de exceção
