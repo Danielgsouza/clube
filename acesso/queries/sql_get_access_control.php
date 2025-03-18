@@ -15,8 +15,6 @@ try {
     // Executa a consulta
     $stmt->execute();
 
-    echo $stmt;
-    exit;
     // Verifica se a consulta retornou resultados
     if ($stmt->rowCount() > 0) {
         // Obtém os dados como um array associativo
