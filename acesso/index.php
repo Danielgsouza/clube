@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
     <link rel="stylesheet" href="../assets/css/notyf.min.css">
+    <link rel="stylesheet" href="./style.css">
     <style>
       .hidden-input {
         position: absolute;
@@ -71,7 +72,7 @@
                 </div>
                 <div class="card" style="border: 2px solid #000">
                 <form id="access-control-form" class="card" method="post" enctype="multipart/form-data">
-                  <input type="text" id="socio-id" name="socio-id"/>
+                  <input type="text" class="hidden-input" id="socio-id" name="socio-id"/>
                 </form>
                   <div class="card-body">
                     <div class="row">
