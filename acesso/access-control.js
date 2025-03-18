@@ -41,10 +41,7 @@ document.getElementById("access-control-form").addEventListener("submit", async 
     document.getElementById('cpf').textContent = socio.cpf;
     document.getElementById('status').innerHTML = dados.status ? '<span class="text-success"><i class="fas fa-check text-success"></i> Ativo</span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger"></i> Pendente</span>';
 
-    // document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
-
     const imagePathBase = `https://adminccm.com/users/uploads/${socio.cpf}`;
-    // const imagePathBase = `../users/uploads/006.103.198-42.jpeg`;
     const imageExtensions = ['.png', '.jpg', '.jpeg']; // Extensões possíveis
     let imagePath = null;
 
@@ -64,7 +61,6 @@ document.getElementById("access-control-form").addEventListener("submit", async 
         for (let ext of imageExtensions) {
           try {
             imagePath = await checkImage(ext); // Tenta carregar a imagem
-            console.log(imagePath);
             document.getElementById('foto-preview').src = imagePath; // Se carregada, exibe a imagem
             return; // Sai da função se a imagem for encontrada
           } catch (error) {
@@ -92,12 +88,10 @@ document.getElementById("access-control-form").addEventListener("submit", async 
       document.getElementById('nome').textContent = '';
       document.getElementById('cpf').textContent = '';
       document.getElementById('status').innerHTML = '';
-      // document.getElementById('status-icon').innerHTML = '';
       document.getElementById('foto-preview').src = '../assets/images/avatar/icon.png';
     }, 3000);
 
   } catch (error) {
-    console.log(error);
     notyf.error(error);
     return;
   }
