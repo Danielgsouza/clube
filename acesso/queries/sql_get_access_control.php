@@ -32,11 +32,6 @@ try {
         $data_limite = clone $data_pagamento; // Clona a data de pagamento para não modificar a original
         $data_limite->add(new DateInterval('P60D')); // Adiciona 60 dias à data do pagamento
 
-        // Para depuração: Exibe as datas de pagamento e limite
-        echo "Data do pagamento: " . $data_pagamento->format('Y-m-d') . "<br>";
-        echo "Data limite (60 dias): " . $data_limite->format('Y-m-d') . "<br>";
-        echo "Data atual: " . $data_atual->format('Y-m-d') . "<br>";
-
         // Comparar se a data atual é superior a 60 dias após o pagamento
         if ($data_atual > $data_limite) {
             // Prazo superior a 60 dias
