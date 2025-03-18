@@ -21,7 +21,7 @@ document.getElementById("access-control-form").addEventListener("submit", async 
   event.preventDefault();
   var form = new FormData(document.getElementById("access-control-form"));
 
-  // try {
+  try {
     const response = await fetch("./queries/sql_get_access_control.php", {
       method: "POST",
       body: form,
@@ -31,7 +31,7 @@ document.getElementById("access-control-form").addEventListener("submit", async 
 
     if (dados.data.length === 0) {
       // Display an error notification
-      notyf.error('Usuário não econtrado e/ou não está cadastrado!');
+      notyf.error('Usuário não encontrado e/ou não está cadastrado!');
       inputCpf.value = ''; 
       return;
     }
@@ -41,10 +41,10 @@ document.getElementById("access-control-form").addEventListener("submit", async 
     document.getElementById('cpf').textContent = socio.cpf;
     document.getElementById('status').innerHTML = dados.status ? '<span class="text-success"><i class="fas fa-check text-success"></i> Ativo</span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger"></i> Pendente</span>';
 
-    document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
+    // document.getElementById('status-icon').innerHTML = dados.status ? '<span class="text-success m-auto" style="font-size: 5rem;"><i class="fas fa-check text-success"></i> </span>' : '<span class="text-danger"><i class="fas fa-xmark text-danger" style="font-size: 5rem;"></i></span>';
 
-    // const imagePathBase = `https://adminccm.com/users/uploads/${socio.cpf}`;
-    const imagePathBase = ``;
+    const imagePathBase = `https://adminccm.com/users/uploads/${socio.cpf}`;
+    // const imagePathBase = `../users/uploads/006.103.198-42.jpeg`;
     const imageExtensions = ['.png', '.jpg', '.jpeg']; // Extensões possíveis
     let imagePath = null;
 
@@ -65,7 +65,7 @@ document.getElementById("access-control-form").addEventListener("submit", async 
           try {
             imagePath = await checkImage(ext); // Tenta carregar a imagem
             console.log(imagePath);
-            $('#foto-preview').attr('src', imagePath); // Se carregada, exibe a imagem
+            document.getElementById('foto-preview').src = imagePath; // Se carregada, exibe a imagem
             return; // Sai da função se a imagem for encontrada
           } catch (error) {
             // Caso a imagem não seja encontrada, tenta a próxima extensão
@@ -73,10 +73,10 @@ document.getElementById("access-control-form").addEventListener("submit", async 
           }
         }
         // Se nenhuma das imagens for encontrada, exibe a imagem padrão
-        $('#foto-preview').attr('src', '../assets/images/avatar/icon.png');
+        document.getElementById('foto-preview').src = '../assets/images/avatar/icon.png';
       } catch (error) {
         // Caso nenhum arquivo seja encontrado, exibe a imagem padrão
-        $('#foto-preview').attr('src', '../assets/images/avatar/icon.png');
+        document.getElementById('foto-preview').src = '../assets/images/avatar/icon.png';
       }
     })();
 
@@ -91,15 +91,14 @@ document.getElementById("access-control-form").addEventListener("submit", async 
     setTimeout(() => {
       document.getElementById('nome').textContent = '';
       document.getElementById('cpf').textContent = '';
-      document.getElementById('status').textContent = '';
-      document.getElementById('status-icon').textContent = '';
+      document.getElementById('status').innerHTML = '';
+      // document.getElementById('status-icon').innerHTML = '';
       document.getElementById('foto-preview').src = '../assets/images/avatar/icon.png';
-
     }, 3000);
 
-  // }catch (error) {
-    // console.log(error);
-    // notyf.error(error);
-    // return;
-  // }
+  } catch (error) {
+    console.log(error);
+    notyf.error(error);
+    return;
+  }
 });
